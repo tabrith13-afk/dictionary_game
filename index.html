@@ -353,6 +353,32 @@ input.link{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:2px so
 .acls{background:#eef6ff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .acls b{font-family:var(--display);font-weight:400;font-size:24px;color:var(--blue-deep)}
 .acls .lk{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;font-size:15px}
+
+.logo{display:flex;flex-direction:column;align-items:center;gap:6px;text-shadow:none}
+.tiles{display:flex;gap:10px}
+.tl{width:64px;height:64px;border-radius:16px;background:#fff;border:4px solid #17304f;box-shadow:4px 4px 0 #ff2e93;display:grid;place-items:center;font-weight:400;font-size:44px;color:#17304f;animation:tlbob 2.4s ease-in-out 1.7s infinite}
+.tl.t2{animation-delay:1.9s}.tl.t3{animation-delay:2.1s}
+.lsub{font-size:46px;color:#fff;-webkit-text-stroke:8px #17304f;paint-order:stroke fill;letter-spacing:1px}
+.lsub i{font-style:normal;color:#ffd23f}
+@keyframes tlbob{0%,100%{transform:none}50%{transform:translateY(-5px) rotate(-2deg)}}
+@keyframes tl1{0%{transform:translateX(74px) rotate(12deg) scale(0)}12%,30%{transform:translateX(74px) rotate(12deg)}40%{transform:translate(37px,-34px) rotate(0)}50%,100%{transform:none}}
+@keyframes tl2{0%{transform:translateX(74px) rotate(-14deg) scale(0)}12%,62%{transform:translateX(74px) rotate(-14deg)}72%{transform:translate(37px,34px) rotate(0)}82%,100%{transform:none}}
+@keyframes tl3{0%{transform:translateX(-148px) rotate(-10deg) scale(0)}12%,30%{transform:translateX(-148px) rotate(-10deg)}40%{transform:translate(-111px,34px)}50%,62%{transform:translateX(-74px) rotate(8deg)}72%{transform:translate(-37px,-34px)}82%,100%{transform:none}}
+@keyframes tlflash{0%,81%{background:#fff}84%,94%{background:#ffd23f}100%{background:#fff}}
+@keyframes lsubin{0%,80%{opacity:0;transform:scale(2.4)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+ .tl.t1{animation:tl1 1.5s both,tlflash 1.7s both,tlbob 2.4s ease-in-out 1.7s infinite}
+ .tl.t2{animation:tl2 1.5s both,tlflash 1.7s both,tlbob 2.4s ease-in-out 1.9s infinite}
+ .tl.t3{animation:tl3 1.5s both,tlflash 1.7s both,tlbob 2.4s ease-in-out 2.1s infinite}
+ .lsub{animation:lsubin 1.6s cubic-bezier(.2,1.4,.4,1) both}
+ .twk{transform-box:fill-box;transform-origin:center;animation:twk 1.2s ease-in-out infinite}.twk.t2{animation-delay:.4s}.twk.t3{animation-delay:.8s}
+}
+@keyframes twk{0%,100%{transform:scale(.3);opacity:.3}50%{transform:scale(1.15);opacity:1}}
+.citem.legend{grid-column:1/-1;background:linear-gradient(120deg,#fff3c9,#ffd96a,#fff3c9,#ffd96a,#fff3c9);background-size:200% 100%;animation:lgshine 4s linear infinite;outline:4px solid #dfa313}
+@keyframes lgshine{to{background-position:-200% 0}}
+.lgd{font-size:15px;color:#7a5a00}
+.lbar{width:min(320px,80%);height:12px;border-radius:6px;background:#fff;border:2px solid #dfa313;overflow:hidden}.lbar i{display:block;height:100%;background:#ff2e93}
+@media (max-width:420px){.tl{width:52px;height:52px;font-size:36px}.lsub{font-size:36px;-webkit-text-stroke-width:6px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -558,7 +584,7 @@ function mapSvg(open){
   ${open?`<text x="${bx}" y="${by+72}" text-anchor="middle" font-family="Jua,sans-serif" font-size="22" fill="#fff">뒤죽박죽 성</text>`:`<g fill="#fff" stroke="${OUT}" stroke-width="3"><ellipse cx="292" cy="${by-8}" rx="52" ry="26"/><ellipse cx="390" cy="${by-4}" rx="54" ry="26"/><ellipse cx="340" cy="${by-34}" rx="56" ry="28"/><ellipse cx="340" cy="${by+16}" rx="70" ry="24"/></g>`}
   <g class="cloudA">${cloud(0,300)}</g><g class="cloudB">${cloud(0,590)}</g><g class="cloudA" style="animation-delay:-22s">${cloud(0,890)}</g></svg>`;
 }
-const COSTUMES=[{id:"cap",name:"빨간 모자",price:30},{id:"glass",name:"동글 안경",price:30},{id:"scarf",name:"노란 목도리",price:50},{id:"bow",name:"분홍 리본",price:50},{id:"cape",name:"영웅 망토",price:80},{id:"crown",name:"황금 왕관",price:120}];
+const COSTUMES=[{id:"cap",name:"빨간 모자",price:30},{id:"glass",name:"동글 안경",price:30},{id:"scarf",name:"노란 목도리",price:50},{id:"bow",name:"분홍 리본",price:50},{id:"cape",name:"영웅 망토",price:80},{id:"crown",name:"황금 왕관",price:120},{id:"gold",name:"황금 사전",price:10000}];
 const MISSIONS=[{id:"stage",name:"탐험 지도 스테이지 1개 끝내기",need:1},{id:"ch",name:"60초 도전 1번 하기",need:1},{id:"ok",name:"낱말 20개 맞히기",need:20}];
 const MISSION_COIN=15;
 const PRAISE=["좋아요!","멋져요!","최고!","척척!","대단해요!","정답!"];
@@ -703,6 +729,7 @@ const WEAR={
  cap:`<path d="M26 16q36-26 72 0v8H26z" fill="#f0554a" stroke="#17304f" stroke-width="3"/><path d="M90 18h22q6 0 6 6H90z" fill="#f0554a" stroke="#17304f" stroke-width="3"/>`,
  bow:`<path d="M32 12L14 2v20zM32 12l18-10v20z" fill="#ff7eb6" stroke="#c0457f" stroke-width="3"/><circle cx="32" cy="12" r="5" fill="#ff7eb6" stroke="#c0457f" stroke-width="3"/>`,
  crown:`<path d="M38 12l4-20 12 12 8-16 8 16 12-12 4 20z" fill="#ffcd45" stroke="#dfa313" stroke-width="3"/>`};
+const logo=()=>`<h1 class="logo" aria-label="가나다 사전 탐험대"><span class="tiles" aria-hidden="true"><b class="tl t1">가</b><b class="tl t2">나</b><b class="tl t3">다</b></span><span class="lsub" aria-hidden="true">사전 <i>탐험대</i></span></h1>`;
 function mascot(mood,size,wear){
   const w=wear||(S.num&&me()&&me().wear)||{};
   const eyes=mood==="happy"
@@ -711,13 +738,15 @@ function mascot(mood,size,wear){
   const mouth=mood==="happy"||mood==="wow"?`<path d="M56 74q12 16 24 0z" fill="#17304f"/>`
     :mood==="sad"?`<path d="M58 84q10-9 20 0" stroke="#17304f" stroke-width="4" fill="none" stroke-linecap="round"/>`
     :`<path d="M58 77q10 9 20 0" stroke="#17304f" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+  const g=w.gold,C=g?["#b8860b","#ffcd45","#b8860b","#dfa313","#fff"]:["#0f4a96","#1f6fd0","#0f4a96","#0f4a96","#ffcd45"];
+  const shine=g?`<path d="M44 14h14L34 104H22z" fill="#fff" opacity=".35"/><g fill="#fff" stroke="#dfa313" stroke-width="1.5"><path class="twk" d="M10 6l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path class="twk t2" d="M114 44l2.5 6.5 6.5 2.5-6.5 2.5-2.5 6.5-2.5-6.5-6.5-2.5 6.5-2.5z"/><path class="twk t3" d="M106 96l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></g>`:"";
   return `<svg class="masc ${mood}" width="${size}" height="${size}" viewBox="0 0 128 128" overflow="visible" aria-hidden="true">
-  ${w.cape?WEAR.cape:""}<ellipse cx="50" cy="118" rx="12" ry="6" fill="#0f4a96"/><ellipse cx="86" cy="118" rx="12" ry="6" fill="#0f4a96"/>
+  ${w.cape?WEAR.cape:""}<ellipse cx="50" cy="118" rx="12" ry="6" fill="${C[0]}"/><ellipse cx="86" cy="118" rx="12" ry="6" fill="${C[0]}"/>
   <rect x="26" y="14" width="84" height="100" rx="14" fill="#fff7dc"/>
-  <rect x="20" y="8" width="84" height="100" rx="14" fill="#1f6fd0" stroke="#0f4a96" stroke-width="3"/>
-  <rect x="20" y="8" width="16" height="100" rx="8" fill="#0f4a96"/>
+  <rect x="20" y="8" width="84" height="100" rx="14" fill="${C[1]}" stroke="${C[2]}" stroke-width="3"/>
+  <rect x="20" y="8" width="16" height="100" rx="8" fill="${C[3]}"/>${shine}
   <path d="M86 8h12v26l-6-6-6 6z" fill="#f0554a"/>
-  <text x="62" y="36" text-anchor="middle" font-family="Jua,sans-serif" font-size="17" fill="#ffcd45">가나다</text>
+  <text x="62" y="36" text-anchor="middle" font-family="Jua,sans-serif" font-size="17" fill="${C[4]}"${g?' stroke="#b8860b" stroke-width=".6"':""}>가나다</text>
   ${eyes}<circle cx="44" cy="74" r="6" fill="#ff9db0" opacity=".85"/><circle cx="92" cy="74" r="6" fill="#ff9db0" opacity=".85"/>${mouth}
   ${["scarf","glass","cap","bow","crown"].map(k=>w[k]?WEAR[k]:"").join("")}</svg>`;
 }
@@ -827,17 +856,17 @@ function render(){app.innerHTML=VIEWS[S.screen]();S.sceneNow=null;}
 const VIEWS={
 who(){
   const c=CLS?CLS.no:(S.cls||store.lastCls||1);
-  return topBar()+`<div class="hero">${mascot("idle",120)}<h1 class="logo">가나다<br>사전 탐험대</h1></div>
+  return topBar()+`<div class="hero">${mascot("idle",120)}${logo()}</div>
   <section class="sheet">${CLS?`<p class="sub">${c}반 탐험대</p>`:`<h2 class="lead">몇 반인가요?</h2>
   <div class="chips">${Array.from({length:10},(_,i)=>i+1).map(n=>`<button class="chip ${c===n?"on":""}" data-act="cls" data-c="${n}">${n}반</button>`).join("")}</div>`}
   <h2 class="lead">${S.loading?"불러오는 중이에요…":"내 번호를 눌러요"}</h2>${CLS?"":`<p class="sub">노란 칸은 ${c}반에서 이미 별명을 정한 번호예요.</p>`}
   <div class="grid-num">${Array.from({length:30},(_,i)=>i+1).map(n=>`<button class="${store.profiles[c+"-"+n]?"has":""}" data-act="num" data-n="${n}" ${S.loading?"disabled":""}>${n}</button>`).join("")}</div></section>`;
 },
 boot(){
-  return `<div class="hero">${mascot("idle",120)}<h1 class="logo">가나다<br>사전 탐험대</h1></div><section class="sheet center"><h2 class="lead">사전 섬으로 가는 중이에요…</h2></section>`;
+  return `<div class="hero">${mascot("idle",120)}${logo()}</div><section class="sheet center"><h2 class="lead">사전 섬으로 가는 중이에요…</h2></section>`;
 },
 land(){
-  return `<div class="hero">${mascot("idle",120)}<h1 class="logo">가나다<br>사전 탐험대</h1></div>
+  return `<div class="hero">${mascot("idle",120)}${logo()}</div>
   <section class="sheet center"><h2 class="lead">선생님이 주신 QR이나 링크로 들어와 주세요</h2>
   <p class="sub">이 주소로는 반을 알 수 없어서 기록이 저장되지 않아요.</p>
   <button class="pill" data-act="localgo">연결 없이 이 기기에서만 해 보기</button></section>`;
@@ -912,7 +941,7 @@ shop(){
   const p=me(),own=p.own||{},wear=p.wear||{};
   return topBar("home","처음으로")+`<section class="sheet"><div class="row between"><h1 class="lead">꾸미기 가게</h1><span class="stat"><i class="coin"></i> ${p.coins||0}</span></div>
   <p class="sub">문제를 맞히고 미션을 끝내면 코인을 얻어요. 코인으로 가나를 꾸며 보세요.</p>
-  <div class="shop">${COSTUMES.map(c=>`<div class="citem ${wear[c.id]?"on":""}">${mascot("idle",84,{[c.id]:1})}<b>${c.name}</b>${own[c.id]
+  <div class="shop">${COSTUMES.map(c=>`<div class="citem ${wear[c.id]?"on":""} ${c.id==="gold"?"legend":""}">${mascot(c.id==="gold"?"happy":"idle",c.id==="gold"?110:84,{[c.id]:1})}<b>${c.name}</b>${c.id==="gold"&&!own.gold?`<span class="lgd">전설의 보물 · 코인을 아주아주 많이 모아야 해요</span><span class="lbar"><i style="width:${Math.min(100,(p.coins||0)/c.price*100).toFixed(1)}%"></i></span><span class="lgd">${p.coins||0} / ${c.price}</span>`:""}${own[c.id]
     ?`<button class="btn ${wear[c.id]?"ghost":""}" data-act="wear" data-id="${c.id}">${wear[c.id]?"벗기":"입기"}</button>`
     :`<button class="btn sun" data-act="buy" data-id="${c.id}" ${(p.coins||0)>=c.price?"":"disabled"}><i class="coin"></i> ${c.price}</button>`}</div>`).join("")}</div></section>`;
 },
